@@ -7,7 +7,7 @@ const App = React.lazy(() => import('./App'));
 ReactDOM.render(
     <Suspense fallback={<div className="loading" />}>  
         <Auth0Provider
-            domain="github.com/login/"
+            domain="github.com/login/oauth/"
             clientId="7fb6579a0c6ae5520f29"
             redirectUri={window.location.origin}>
             <App />
