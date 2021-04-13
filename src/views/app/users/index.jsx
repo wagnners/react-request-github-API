@@ -37,7 +37,7 @@ const Users = ({query, history}) => {
                         <Card>
                             <Row>
                                 <Col xs="4" sm="3" md="2" lg="2">
-                                    <div class="avatar" style={{"backgroundImage": `url('${user.avatar_url}')`}} />
+                                    <div className="avatar" style={{"backgroundImage": `url('${user.avatar_url}')`}} />
                                 </Col>
                                 <Col xs="8" sm="9" md="10" lg="10">
                                     <CardBody>

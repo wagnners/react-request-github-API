@@ -13,11 +13,9 @@ const Search = (props) => {
     const [type, setType] = useState(values.type);
     
     const handleChangeType = (type) => {
-
         setType(type);
         props.history.push(`/app/search?q=${values.q}&type=${type}`);
-
-       
+        props.history.go();
     }
 
     return (

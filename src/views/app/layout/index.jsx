@@ -1,13 +1,13 @@
 import React from 'react';
 import NavBar from '../../../components/NavBar';
 
-const AppLayout = ({ children, history }) => {
+const AppLayout = (props) => {
   
   return (
     <div id="app-container">
-      <NavBar history={history} />
+      <NavBar {...props} />
       <main>
-        {children}
+        {props.children}
       </main>
     </div>
   );

@@ -2,14 +2,11 @@ import React, { useState } from 'react'
 import { Col, Row } from 'reactstrap';
 import SearchInput from '../../components/SearchInput';
 import logo from '../../assets/img/github-logo.png';
-import searchStore from '../../zustand/search';
 
 const Home = ({history}) => {
   
-  const changeSearch = searchStore(state => state.changeSearch);   
-  
   const [state, setState] = useState({
-    search: searchStore((state) => state.search)
+    search: ""
   });
 
   const handleChangeInput = (values) => {
@@ -25,9 +22,6 @@ const Home = ({history}) => {
   }
 
   const btnSearch = () => {
-
-    changeSearch(state.search);
-
     history.push({
       pathname: '/app/search',
       search: '?q='+state.search+'&type=users',

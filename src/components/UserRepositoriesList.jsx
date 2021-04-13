@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, CardBody, CardText, CardTitle, Col, Row } from 'reactstrap';
 
-const UserRepositoriesLit = ({repositories}) => {
+const UserRepositoriesList = ({repositories}) => {
   
     return (
         <Row>
@@ -26,4 +26,4 @@ const UserRepositoriesLit = ({repositories}) => {
     );
 };
 
-export default UserRepositoriesLit;
+export default UserRepositoriesList;
