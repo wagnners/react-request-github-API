@@ -1,39 +1,32 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import queryString from 'query-string';
+import { Row, Col } from 'reactstrap';
+import SideMenu from '../../../components/SideMenu';
+import Users from '../users';
+import Repositories from '../repositories';
+import MostSeen from '../mostSeen';
 
+const Search = (props) => { 
 
-const Search = ({location}) => {
+    const values = queryString.parse(props.location.search);
+    const [type, setType] = useState(values.type);
     
-    const querie_values = queryString.parse(location.search);
-
-    const api = {
-        url: "https://api.github.com",
-        clientId: "7fb6579a0c6ae5520f29",
-        clientSecret: "e43007a7f08de3e370760ce0545b7f359ca12f51",
-
+    const handleChangeType = (type) => {
+        setType(type);
+        props.history.push(`/app/search?q=bd&type=${type}#`);
     }
-    const [state, setState] = useState({
-        users: null,
-    });
-
-    // useEffect(() => {
-    //     if(querie_values.type === "users"){
-            
-
-    //         axios.get(`https://github.com/login/oauth/authorize?client_id=${api.clientId}`,{
-    //             headers: {
-    //                 "Access-Control-Allow-Origin": "*"
-    //             }
-    //         })
-    //         .then(res => {
-    //            console.log(res);
-    //         })    
-    //     }
-    // }, [state.users]);
 
     return (
-       <h1>Teste 1</h1>
+        <Row>
+            <Col sm="12" md="3" lg="2">
+                <SideMenu handleChangeType={handleChangeType} type={type} />
+            </Col>
+            <Col className="api-content p-3" sm="12" md="9" lg="10" >
+                {type === "users" && <Users query={values.q} {...props}/>}
+                {type === "repositories" && <Repositories query={values.q} {...props} />}
+                {type === "moost_seen" && <MostSeen {...props}/>}
+            </Col>
+        </Row>  
     );
 };
 

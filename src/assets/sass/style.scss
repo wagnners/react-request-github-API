@@ -26,12 +26,22 @@ body{
     border-radius: 10px;
 }
 
-.search-content{
+.api-content{
+
+    top: 60px;
+
+    @media (max-width: 769px) {
+        top: 205px;
+    }
+
+}
+
+.search-content, header{
 
     margin: 0 auto;
 
     input{
-        height: 40px !important;
+        height: 60px !important;
         border-radius: 50px 0 0 50px !important;
         border-right: none !important;
     }
@@ -45,11 +55,6 @@ body{
         border-color: #80bdff !important;
     }
       
-   .input-group-text:hover {
-        cursor: pointer;
-        background-color: $light;
-    }
-      
     .input-group-text{
         width: 100px;
         justify-content: center;
@@ -57,6 +62,111 @@ body{
         background-color: #fff;
         border-left: none;
         font-size: 24px;
+
+        &.hover{
+            cursor: pointer;
+            background-color: $light;
+        }
+
     }
 }
 
+header{
+
+    z-index: 10;
+    height: 71px;
+
+    img{
+        width: 45px;
+        top: 0px;
+        filter: invert(100%);
+    }
+
+    .form-group{
+        z-index: 50;
+        margin: 4px 0 0 80px;
+        position: absolute;
+        width: 50%;
+
+        @media (max-width: 769px) {
+            width: initial;
+        }
+
+    }
+    
+    input{
+        height: 40px !important;   
+    }
+
+    @media (max-width: 769px) {
+        height: 60px;
+    }
+
+}
+.card{
+
+    .card-buttons{
+
+        button:nth-child(2){
+            margin-left: 10px;
+        }
+
+    }
+}
+
+.sidebar {
+    position: fixed;
+    top: 55px;
+    bottom: 0;
+    left: 0;
+    z-index: 100; /* Behind the navbar */
+    box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+
+    @media (max-width: 769px) {
+        top: 52px;
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+        box-shadow: 10px 2px 5px rgba(0, 0, 0, .1);
+        background-color: #343a40 !important;
+        position: fixed;
+        height: fit-content;
+    }
+        
+    .nav-item{  
+
+        @media (max-width: 769px) {
+            width: 100%;
+            text-align: center;
+        }
+
+        .nav-link{ 
+
+            font-weight: 500;
+            color: #333 !important;
+
+            @media (max-width: 769px) {
+                color: $light !important;
+            }
+    
+            &:hover{
+                .feather {
+                    color: inherit;
+                }
+            }
+
+            &.active {
+
+                color: #007bff !important;
+
+                .feather {
+                    color: inherit;
+                }
+            }
+
+            .feather {
+                margin-right: 4px;
+                color: #727272;
+            }
+        }
+    }
+}

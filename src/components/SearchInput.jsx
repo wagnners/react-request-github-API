@@ -10,7 +10,7 @@ const SearchInput = ({state, name, handleChangeInput, onClick}) => {
     <FormGroup>
       <InputGroup>
         <Input 
-          placeholder="Procurar" 
+          placeholder="Procurar usuário / repositório" 
           name={name}
           value={state[name]}
           onChange={handleChangeInput}

@@ -1,17 +1,14 @@
 import React from 'react';
 import NavBar from '../../../components/NavBar';
 
-const AppLayout = ({ children }) => {
+const AppLayout = ({ children, history }) => {
+  
   return (
     <div id="app-container">
-      <NavBar />
+      <NavBar history={history} />
       <main>
-          <div className="container mt-3">{children}</div>
+        {children}
       </main>
-      {/* <main>
-        <div className="container-fluid">{children}</div>
-      </main> */} 
-      {/* <Footer /> */}
     </div>
   );
 };

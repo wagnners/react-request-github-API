@@ -1,13 +1,13 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
-import { useAuth0 } from '@auth0/auth0-react';
+import accessStore from './zustand/github';
 
 const Home = React.lazy(() => import('./views/home'));
 const GitHub = React.lazy(() => import('./views/github/login'));
+const Authorize = React.lazy(() => import('./views/github/authorize'));
 const App = React.lazy(() => import('./views/app'));
 
 const AuthRoute = ({ component: Component, authUser, ...rest }) => {
-  alert(authUser);
   return (
     <Route
       {...rest}
@@ -15,7 +15,7 @@ const AuthRoute = ({ component: Component, authUser, ...rest }) => {
         authUser ? (
           <Component {...props} />
         ) : (
-          <Redirect to="/github" />
+          <Redirect to="/github/login" />
         )
       }
     />
@@ -24,38 +24,33 @@ const AuthRoute = ({ component: Component, authUser, ...rest }) => {
 
 const Routes = _ =>{
 
-  const {
-    isLoading,
-    isAuthenticated,
-    error,
-    user,
-    loginWithRedirect,
-    logout,
-  } = useAuth0();
-
-  console.log(user);
-
+  const access = accessStore((state) => state.api_access);
 
   return (
     <Router>
       <Switch>
-        <Route
-          path="/github/login"
-          render={(props) => <GitHub {...props} />}
+        <AuthRoute
+          path={"/app"}
+          authUser={access}
+          component={App}
         />
         <Route
           path="/app"
           render={(props) => <App {...props} />}
         />
         <Route
-          path="/home"
-          render={(props) => <Home {...props} />}
-        />GitHub
+          path="/github/login"
+          render={(props) => <GitHub {...props} />}
+        />
+        <Route
+          path="/authorize"
+          render={(props) => <Authorize {...props} />}
+        />
         <Route
           path="/"
-          exact>
-            {isAuthenticated ? <Redirect to="/home" /> : <Redirect to="/github/login" />}
-        </Route>
+          exact
+          render={(props) => <Home {...props} />}
+        />
         <Redirect to="/error" />      
       </Switch>
     </Router>
