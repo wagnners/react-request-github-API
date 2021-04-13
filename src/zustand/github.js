@@ -7,8 +7,8 @@ let access = (set) => ({
 });
 
 access = devtools(access);
-access = persist(access);
+access = persist(access,  {name: "github_api"});
 
-const accessStore = create(access, {name: "github_api"});
+const accessStore = create(access);
 
 export default accessStore;

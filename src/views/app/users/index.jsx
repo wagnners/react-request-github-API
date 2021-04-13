@@ -50,10 +50,10 @@ const Users = ({query, history}) => {
                     <Col md="12" lg="12" sm="12" className="mb-3" key={user.id}>
                         <Card>
                             <Row>
-                                <Col md="2">
-                                    <CardImg top height="100%" src={user.avatar_url} alt="Avatar" />
+                                <Col xs="4" sm="3" md="2" lg="2">
+                                    <div class="avatar" style={{"backgroundImage": `url('${user.avatar_url}')`}} />
                                 </Col>
-                                <Col md="10">
+                                <Col xs="8" sm="9" md="10" lg="10">
                                     <CardBody>
                                         <CardTitle tag="h5">{user.login}</CardTitle>
                                         <CardText>{user.html_url}.</CardText>

@@ -5,8 +5,8 @@ const ButtonsUser = ({user, handleBtnRepositoriesList}) => {
 
     return (
         <div className="card-buttons">
-            <Button onClick={() => handleBtnRepositoriesList(user,"repositories")}>Repositórios</Button>
-            <Button onClick={() => handleBtnRepositoriesList(user, "starred")}>Mais Visitados</Button> 
+            <Button size="sm" onClick={() => handleBtnRepositoriesList(user,"repositories")}>Repositórios</Button>
+            <Button size="sm" onClick={() => handleBtnRepositoriesList(user, "starred")}>Mais Visitados</Button> 
         </div>
     );
 };

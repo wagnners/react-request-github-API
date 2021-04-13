@@ -35,10 +35,6 @@ const Routes = _ =>{
           component={App}
         />
         <Route
-          path="/app"
-          render={(props) => <App {...props} />}
-        />
-        <Route
           path="/github/login"
           render={(props) => <GitHub {...props} />}
         />
