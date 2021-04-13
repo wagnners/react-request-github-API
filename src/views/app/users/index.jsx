@@ -24,7 +24,7 @@ const Users = ({query, history}) => {
   
         const url = type === "repositories" ? `https://api.github.com/users/${user}/repos` : `https://api.github.com/users/${user}/starred`;  
 
-        history.push(`/app/search/user/${type}?type=user_repositories&url=${url}`);
+        history.push(`/app/search/user/${type}?q=${user}&type=user_repositories&url=${url}`);
         history.go();
         
     }
