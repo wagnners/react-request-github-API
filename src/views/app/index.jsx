@@ -11,18 +11,10 @@ const App = ({ match, history }) => {
   return (
     <AppLayout history={history}>
         <Switch>
-            <Redirect exact from={`${match.url}`} to={`${match.url}/search`} />
+   
             <Route
                 path={`${match.url}/search`}
                 render={(props) => <Search {...props} />}
-            />
-            <Route
-                path={`${match.url}/user/repositories`}
-                render={(props) => <UsersRepositories {...props} />}
-            />
-            <Route
-                path={`${match.url}/user/starred`}
-                render={(props) => <UsersRepositories {...props} />}
             />
             <Redirect to="/error" />
         </Switch>

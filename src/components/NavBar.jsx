@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import { NavLink } from 'reactstrap';
 import logo from '../assets/img/github-logo.png';
 import SearchInput from './SearchInput';
+import searchStore from '../zustand/search';
 
 const NavBar = ({history}) => {
   
+  const changeSearch = searchStore(state => state.changeSearch); 
   const [state, setState] = useState({
     search: "",
   });
@@ -22,15 +24,7 @@ const NavBar = ({history}) => {
   }
 
   const btnSearch = () => {
-    history.push({
-      pathname: '/app/search',
-      search: '?q='+state.search+'&type=users',
-      state: 
-        {q: state.search,
-        type: "users"}
-    });
-
-    window.location.reload();
+    changeSearch(state.search);
   }
 
   return (

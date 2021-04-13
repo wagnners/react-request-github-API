@@ -7,7 +7,6 @@ import accessStore from '../../../zustand/github';
 const Users = ({query, history}) => { 
 
     const access = accessStore((state) => state.api_access);
-
     const [users, setUsers] = useState(null);
 
     useEffect(() => {
@@ -19,28 +18,15 @@ const Users = ({query, history}) => {
        
         fetch();
 
-    }, access);
+    }, [access]);
 
     const handleBtnRepositoriesList = (user, type) => {;
- 
-        if(type === "repositories"){
+  
+        const url = type === "repositories" ? `https://api.github.com/users/${user}/repos` : `https://api.github.com/users/${user}/starred`;  
 
-            const url  = `https://api.github.com/users/${user}/repos`;
-
-            history.push({
-                pathname: '/app/user/repositories',
-                search: '?q='+url    
-            });
-
-        }else{
-
-            const url  = `https://api.github.com/users/${user}/starred`;
-
-            history.push({
-                pathname: '/app/user/starred',
-                search: '?q='+url    
-            });
-        }
+        history.push(`/app/search/user/${type}?type=user_repositories&url=${url}`);
+        history.go();
+        
     }
 
     return (
