@@ -2,8 +2,8 @@ import queryString from 'query-string';
 import axios from 'axios';
 
 const api = {
-    client_id: '7fb6579a0c6ae5520f29',
-    client_secret: '4216704130220c806f167f3eda462d150943252d'
+    client_id: 'YOUR_CLIENT_ID',
+    client_secret: 'YOUR_CLIENT_SECRET'
 }
 
 export const getToken = async (search) => {

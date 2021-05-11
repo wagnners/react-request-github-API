@@ -10,7 +10,6 @@ const App = (props) => {
   return (
     <AppLayout {...props}>
         <Switch>
-   
             <Route
                 path={`${props.match.url}/search`}
                 render={(props) => <Search {...props} />}
